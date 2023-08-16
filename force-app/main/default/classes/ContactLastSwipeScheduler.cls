@@ -1,5 +1,5 @@
 public with sharing class ContactLastSwipeScheduler implements Schedulable {
-    public static String schedule = '0 29 16 ? * *'; // Every day at 4:29pm
+    public static String schedule = '0 44 3 ? * *'; // Every day at 3:44am
 
     public static String run() {
         ContactLastSwipeScheduler sched = new ContactLastSwipeScheduler();
