@@ -19,9 +19,10 @@ public with sharing class ContactLastSwipeBatch implements Database.Batchable<SO
             }
         }
         if (!lstContactsToUpdate.isEmpty()) {
+            // TODO - Handle failures
             List<Database.SaveResult> lstResults = Database.update(
                 lstContactsToUpdate, 
-                true, 
+                false, 
                 AccessLevel.SYSTEM_MODE
             );
         }
