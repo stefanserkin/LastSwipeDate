@@ -4,7 +4,7 @@ public with sharing class ContactLastSwipeBatch implements Database.Batchable<SO
 
     public Database.QueryLocator start(Database.BatchableContext bc) {
         String query = 'SELECT Id, Last_Swipe__c, (SELECT SwipeTime__c FROM AccessSwipes__r ORDER BY SwipeTime__c DESC LIMIT 1)' + 
-            ' FROM Contact WHERE Id IN (SELECT Contact__c FROM AccessSwipes__c WHERE SwipeDate__c = YESTERDAY)';
+            ' FROM Contact WHERE Id IN (SELECT Contact__c FROM AccessSwipes__c WHERE SwipeDate__c = YESTERDAY OR CreatedDate >= YESTERDAY OR LastModifiedDate >= YESTERDAY)';
         return Database.getQueryLocator(query);
     }
 
